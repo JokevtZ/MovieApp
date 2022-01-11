@@ -40,10 +40,7 @@ fun DetailsScreen(navController: NavController, movieData: String?){
             {
             Text(text = movieData.toString(),
             style = MaterialTheme.typography.h4)
-
             }
         }
     }
-
-
 }
