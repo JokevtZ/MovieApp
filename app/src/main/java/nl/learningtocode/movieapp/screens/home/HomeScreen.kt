@@ -1,4 +1,4 @@
-package nl.learningtocode.movieapp.screens.home
+package nl.learningtocode.movieapp.screens
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import nl.learningtocode.movieapp.MovieRow
+import nl.learningtocode.movieapp.navigation.MovieScreens
 
 @Composable
 fun HomeScreen(navController: NavController){
@@ -55,6 +56,8 @@ fun MainContent(
             items(items = movieList) {
                 MovieRow(movie = it) { movie ->
                     Log.d("TAG", "MainContent: $movie")
+
+                    navController.navigate(route = MovieScreens.DetailScreen.name)
                 }
             }
         }
