@@ -41,7 +41,6 @@ fun MyApp(content: @Composable () -> Unit) {
 
 }
 
-
 @Composable
 fun MovieRow(movie: String, onItemClick: (String) -> Unit = {} ) {
     Card(modifier = Modifier
@@ -72,7 +71,6 @@ fun MovieRow(movie: String, onItemClick: (String) -> Unit = {} ) {
 
         }
     }
-
 
 @Preview(showBackground = true)
 @Composable
