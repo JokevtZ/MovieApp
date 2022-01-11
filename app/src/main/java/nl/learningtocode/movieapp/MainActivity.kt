@@ -1,25 +1,25 @@
 package nl.learningtocode.movieapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import nl.learningtocode.movieapp.navigation.MovieNavigation
 import nl.learningtocode.movieapp.ui.theme.MovieAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp{
-                MainContent()
+                MovieNavigation()
             }
         }
     }
@@ -36,48 +36,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     MovieAppTheme {
-        Scaffold(topBar = {
-            TopAppBar(backgroundColor = Color.Blue,
-                elevation = 5.dp) {
-                Text(text = "Marvel Movies")
+        content()
+    }
 
-            }
-        }) {
-            content()
-            }
-        }
 }
 
-@Composable
-fun MainContent(movieList: List<String> = listOf(
-        "The Wolverine",
-        "Spiderman",
-        "Deadpool",
-        "Superman",
-        "The Flash",
-        "The Green Lantern",
-        "The Green Arrow",
-        "Captain Marvel",
-        "Iron Man",
-        "Caption America",
-        "The Incredible Hulk",
-        "Venom",
-        "Thor",
-        "Doctor Strange",
-        "Black Widow",
-        "The Black Panther",
-        "Ant-Man"
-)) {
-        Column(modifier = Modifier.padding(12.dp)) {
-            LazyColumn {
-                items(items = movieList) {
-                    MovieRow(movie = it) { movie ->
-                        Log.d("TAG", "MainContent: $movie")
-                    }
-                }
-            }
-        }
-}
 
 @Composable
 fun MovieRow(movie: String, onItemClick: (String) -> Unit = {} ) {
@@ -86,7 +49,7 @@ fun MovieRow(movie: String, onItemClick: (String) -> Unit = {} ) {
         .fillMaxWidth()
         .height(130.dp)
         .clickable {
-                onItemClick(movie)
+            onItemClick(movie)
         },
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         elevation = 6.dp) {
@@ -115,6 +78,6 @@ fun MovieRow(movie: String, onItemClick: (String) -> Unit = {} ) {
 @Composable
 fun DefaultPreview() {
     MyApp {
-        MainContent()
+        MovieNavigation()
     }
 }
