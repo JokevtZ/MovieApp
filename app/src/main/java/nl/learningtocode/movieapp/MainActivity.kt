@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 fun MyApp(content: @Composable () -> Unit) {
     MovieAppTheme {
         Scaffold(topBar = {
-            TopAppBar(backgroundColor = Color.Red,
+            TopAppBar(backgroundColor = Color.Blue,
                 elevation = 5.dp) {
                 Text(text = "Marvel Movies")
 
